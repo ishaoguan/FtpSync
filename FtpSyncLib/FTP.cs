@@ -13,6 +13,11 @@ namespace FtpSyncLib
     {
         public static NLog.ILogger Logger = NLog.LogManager.GetCurrentClassLogger();
 
+        public static void TestLog()
+        {
+            Logger.Info("TestLog");
+        }
+
         private string Host { get; set; }
         private string User { get; set; }
         private string Pwd { get; set; }

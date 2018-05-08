@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpSyncLib", "FtpSyncLib\Ft
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpSyncTest", "FtpSyncTest\FtpSyncTest.csproj", "{8F3125BD-DD31-4EBE-A300-D506929F9A2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpSyncService", "FtpSyncService\FtpSyncService.csproj", "{18489D46-BD84-4BB3-AEEC-B46EEFCA91DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpSyncServiceInstaller", "FtpSyncServiceInstaller\FtpSyncServiceInstaller.csproj", "{9C7D8224-8BEF-4750-9847-4157E07B75F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8F3125BD-DD31-4EBE-A300-D506929F9A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F3125BD-DD31-4EBE-A300-D506929F9A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F3125BD-DD31-4EBE-A300-D506929F9A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18489D46-BD84-4BB3-AEEC-B46EEFCA91DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18489D46-BD84-4BB3-AEEC-B46EEFCA91DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18489D46-BD84-4BB3-AEEC-B46EEFCA91DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18489D46-BD84-4BB3-AEEC-B46EEFCA91DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7D8224-8BEF-4750-9847-4157E07B75F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7D8224-8BEF-4750-9847-4157E07B75F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7D8224-8BEF-4750-9847-4157E07B75F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7D8224-8BEF-4750-9847-4157E07B75F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
