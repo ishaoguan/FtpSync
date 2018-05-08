@@ -10,9 +10,6 @@ namespace FtpSyncTest
     {
         static void Main(string[] args)
         {
-            var ftp = new FtpSyncLib.FTP("10.211.55.24", "mac", "mmac");
-            ftp.Backup("/", "C:\\ftplocal");
-            ftp.Sync("/", "C:\\ftplocal");
             Console.ReadKey();
         }
     }

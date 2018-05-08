@@ -23,11 +23,22 @@ namespace FtpSyncService
 
         protected override void OnStart(string[] args)
         {
+            var config = new Config();
             syncTimer = new Timer();
-            syncTimer.Interval = 10000;
+            syncTimer.Interval = TimeSpan.FromMinutes(1).TotalMilliseconds;
             syncTimer.Elapsed += (s, e) =>
             {
-                FTP.TestLog();
+                var ftp = new FTP(config.ReadValue("Host"), config.ReadValue("User"), config.ReadValue("Pwd"));
+                var mode = config.ReadValue("Mode");
+                var isDel = config.ReadValue("IsDeleteFile") == "true" ? true : false;
+                if (mode == "sync")
+                {
+                    ftp.Sync(config.ReadValue("RemotePath"), config.ReadValue("LocalPath"), isDel);
+                }
+                else
+                {
+                    ftp.Backup(config.ReadValue("RemotePath"), config.ReadValue("LocalPath"), isDel);
+                }
             };
             syncTimer.Enabled = true;
         }

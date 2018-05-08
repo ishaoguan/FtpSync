@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FtpSyncLib;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,27 @@ namespace FtpSyncServiceInstaller
         public MainForm()
         {
             InitializeComponent();
+            this.Load += MainForm_Load;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            var config = new Config();
+            textBoxHost.Text = config.ReadValue("Host");
+            textBoxUser.Text = config.ReadValue("User");
+            textBoxPwd.Text = config.ReadValue("Pwd");
+            textBoxRemote.Text = config.ReadValue("RemotePath");
+            textBoxLocal.Text = config.ReadValue("LocalPath");
+            var mode = config.ReadValue("Mode");
+            if (mode == "sync")
+            {
+                radioButtonSync.Checked = true;
+            }
+            var isDeleteFile = config.ReadValue("IsDeleteFile");
+            if (isDeleteFile == "true")
+            {
+                checkBoxDel.Checked = true;
+            }
         }
 
         string serviceFilePath = $"{Application.StartupPath}\\FtpSyncService.exe";
@@ -25,6 +47,14 @@ namespace FtpSyncServiceInstaller
 
         private void buttonInstall_Click(object sender, EventArgs e)
         {
+            var config = new Config();
+            config.WriteValue("Host", textBoxHost.Text);
+            config.WriteValue("User", textBoxUser.Text);
+            config.WriteValue("Pwd", textBoxPwd.Text);
+            config.WriteValue("RemotePath", textBoxRemote.Text);
+            config.WriteValue("LocalPath", textBoxLocal.Text);
+            config.WriteValue("Mode", radioButtonBackup.Checked ? "backup" : "sync");
+            config.WriteValue("IsDeleteFile", checkBoxDel.Checked ? "true" : "false");
             if (IsServiceExisted(serviceName))
             {
                 UninstallService(serviceName);
@@ -98,6 +128,16 @@ namespace FtpSyncServiceInstaller
                 {
                     control.Stop();
                 }
+            }
+        }
+
+        private void textBoxLocal_Click(object sender, EventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            var result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                textBoxLocal.Text = dialog.SelectedPath;
             }
         }
     }
