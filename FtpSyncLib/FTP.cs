@@ -18,6 +18,11 @@ namespace FtpSyncLib
             Logger.Info("TestLog");
         }
 
+        static FTP()
+        {
+            LogConfig.Init();
+        }
+
         private string Host { get; set; }
         private string User { get; set; }
         private string Pwd { get; set; }

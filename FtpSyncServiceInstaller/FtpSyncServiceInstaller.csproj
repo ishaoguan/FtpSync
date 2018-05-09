@@ -24,7 +24,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\BuildOut\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -87,9 +87,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\FtpSyncLib\FtpSyncLib.csproj">
       <Project>{c8050e7d-c2df-4a99-9527-75f66b0f1621}</Project>
       <Name>FtpSyncLib</Name>
@@ -103,4 +100,11 @@
     <Resource Include="FSSI.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del /f /s /q /a $(TargetDir)*.xml</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>

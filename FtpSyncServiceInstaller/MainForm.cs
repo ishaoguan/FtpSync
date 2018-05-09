@@ -43,7 +43,7 @@ namespace FtpSyncServiceInstaller
             }
         }
 
-        private readonly string _serviceFilePath = $"{Application.StartupPath}\\FtpSyncService.exe";
+        private readonly string _serviceFilePath = $"{Application.StartupPath}\\FtpSyncSrv.exe";
         string serviceName = "FtpSyncService";
 
         private void buttonInstall_Click(object sender, EventArgs e)
