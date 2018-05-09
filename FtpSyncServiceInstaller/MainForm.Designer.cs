@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.buttonInstall = new System.Windows.Forms.Button();
             this.buttonUninstall = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -242,6 +243,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonUninstall);
             this.Controls.Add(this.buttonInstall);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(362, 161);
             this.MinimizeBox = false;
@@ -249,7 +251,7 @@
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Installer";
+            this.Text = "FSSI";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -7,7 +7,7 @@
     <ProjectGuid>{9C7D8224-8BEF-4750-9847-4157E07B75F4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FtpSyncServiceInstaller</RootNamespace>
-    <AssemblyName>FtpSyncServiceInstaller</AssemblyName>
+    <AssemblyName>FSSI</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FSSI.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -95,6 +98,9 @@
       <Project>{18489d46-bd84-4bb3-aeec-b46eefca91dc}</Project>
       <Name>FtpSyncService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FSSI.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
