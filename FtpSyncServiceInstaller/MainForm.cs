@@ -30,6 +30,7 @@ namespace FtpSyncServiceInstaller
             textBoxPwd.Text = config.ReadValue("Pwd");
             textBoxRemote.Text = config.ReadValue("RemotePath");
             textBoxLocal.Text = config.ReadValue("LocalPath");
+            textBoxInterval.Text = config.ReadValue("Interval");
             var mode = config.ReadValue("Mode");
             if (mode == "sync")
             {
@@ -42,7 +43,7 @@ namespace FtpSyncServiceInstaller
             }
         }
 
-        string serviceFilePath = $"{Application.StartupPath}\\FtpSyncService.exe";
+        private readonly string _serviceFilePath = $"{Application.StartupPath}\\FtpSyncService.exe";
         string serviceName = "FtpSyncService";
 
         private void buttonInstall_Click(object sender, EventArgs e)
@@ -53,13 +54,14 @@ namespace FtpSyncServiceInstaller
             config.WriteValue("Pwd", textBoxPwd.Text);
             config.WriteValue("RemotePath", textBoxRemote.Text);
             config.WriteValue("LocalPath", textBoxLocal.Text);
+            config.WriteValue("Interval", textBoxInterval.Text);
             config.WriteValue("Mode", radioButtonBackup.Checked ? "backup" : "sync");
             config.WriteValue("IsDeleteFile", checkBoxDel.Checked ? "true" : "false");
             if (IsServiceExisted(serviceName))
             {
                 UninstallService(serviceName);
             }
-            InstallService(serviceFilePath);
+            InstallService(_serviceFilePath);
             ServiceStart(serviceName);
             MessageBox.Show("安装完成");
         }
@@ -69,7 +71,7 @@ namespace FtpSyncServiceInstaller
             if (IsServiceExisted(serviceName))
             {
                 ServiceStop(serviceName);
-                UninstallService(serviceFilePath);
+                UninstallService(_serviceFilePath);
             }
             MessageBox.Show("卸载完成");
         }
@@ -138,6 +140,17 @@ namespace FtpSyncServiceInstaller
             if (result == DialogResult.OK)
             {
                 textBoxLocal.Text = dialog.SelectedPath;
+            }
+        }
+
+        private void textBoxInterval_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b')
+            {
+                if ((e.KeyChar < '0') || (e.KeyChar > '9'))
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

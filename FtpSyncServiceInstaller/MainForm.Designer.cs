@@ -44,13 +44,16 @@
             this.radioButtonBackup = new System.Windows.Forms.RadioButton();
             this.radioButtonSync = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBoxInterval = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonInstall
             // 
             this.buttonInstall.Location = new System.Drawing.Point(12, 91);
             this.buttonInstall.Name = "buttonInstall";
-            this.buttonInstall.Size = new System.Drawing.Size(100, 23);
+            this.buttonInstall.Size = new System.Drawing.Size(65, 23);
             this.buttonInstall.TabIndex = 0;
             this.buttonInstall.Text = "安装服务";
             this.buttonInstall.UseVisualStyleBackColor = true;
@@ -58,9 +61,9 @@
             // 
             // buttonUninstall
             // 
-            this.buttonUninstall.Location = new System.Drawing.Point(121, 91);
+            this.buttonUninstall.Location = new System.Drawing.Point(82, 91);
             this.buttonUninstall.Name = "buttonUninstall";
-            this.buttonUninstall.Size = new System.Drawing.Size(100, 23);
+            this.buttonUninstall.Size = new System.Drawing.Size(65, 23);
             this.buttonUninstall.TabIndex = 1;
             this.buttonUninstall.Text = "卸载服务";
             this.buttonUninstall.UseVisualStyleBackColor = true;
@@ -150,11 +153,11 @@
             // checkBoxDel
             // 
             this.checkBoxDel.AutoSize = true;
-            this.checkBoxDel.Location = new System.Drawing.Point(238, 95);
+            this.checkBoxDel.Location = new System.Drawing.Point(280, 95);
             this.checkBoxDel.Name = "checkBoxDel";
-            this.checkBoxDel.Size = new System.Drawing.Size(96, 16);
+            this.checkBoxDel.Size = new System.Drawing.Size(54, 16);
             this.checkBoxDel.TabIndex = 13;
-            this.checkBoxDel.Text = "IsDeleteFile";
+            this.checkBoxDel.Text = "IsDel";
             this.checkBoxDel.UseVisualStyleBackColor = true;
             // 
             // radioButtonBackup
@@ -189,11 +192,40 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Mode:";
             // 
+            // textBoxInterval
+            // 
+            this.textBoxInterval.Location = new System.Drawing.Point(221, 93);
+            this.textBoxInterval.Name = "textBoxInterval";
+            this.textBoxInterval.Size = new System.Drawing.Size(34, 21);
+            this.textBoxInterval.TabIndex = 18;
+            this.textBoxInterval.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxInterval_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(162, 96);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 12);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Interval:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(256, 96);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(11, 12);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "h";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 122);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBoxInterval);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.radioButtonSync);
             this.Controls.Add(this.radioButtonBackup);
@@ -211,7 +243,9 @@
             this.Controls.Add(this.buttonUninstall);
             this.Controls.Add(this.buttonInstall);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(362, 161);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(362, 161);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -239,6 +273,9 @@
         private System.Windows.Forms.RadioButton radioButtonBackup;
         private System.Windows.Forms.RadioButton radioButtonSync;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxInterval;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 

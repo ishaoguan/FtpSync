@@ -8,13 +8,13 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
+using System.Threading;
 
 namespace FtpSyncService
 {
     public partial class FtpSyncService : ServiceBase
     {
-        Timer syncTimer;
+        Timer _syncTimer;
 
         public FtpSyncService()
         {
@@ -24,9 +24,8 @@ namespace FtpSyncService
         protected override void OnStart(string[] args)
         {
             var config = new Config();
-            syncTimer = new Timer();
-            syncTimer.Interval = TimeSpan.FromMinutes(1).TotalMilliseconds;
-            syncTimer.Elapsed += (s, e) =>
+            var hour = int.Parse(config.ReadValue("Interval", "6"));
+            _syncTimer = new Timer(state =>
             {
                 var ftp = new FTP(config.ReadValue("Host"), config.ReadValue("User"), config.ReadValue("Pwd"));
                 var mode = config.ReadValue("Mode");
@@ -39,16 +38,12 @@ namespace FtpSyncService
                 {
                     ftp.Backup(config.ReadValue("RemotePath"), config.ReadValue("LocalPath"), isDel);
                 }
-            };
-            syncTimer.Enabled = true;
+            }, null, TimeSpan.FromSeconds(10), TimeSpan.FromHours(hour));
         }
 
         protected override void OnStop()
         {
-            if (syncTimer != null)
-            {
-                syncTimer.Enabled = false;
-            }
+            _syncTimer?.Dispose();
         }
     }
 }

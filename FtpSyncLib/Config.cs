@@ -20,8 +20,9 @@ namespace FtpSyncLib
                 WriteValue("Pwd", "");
                 WriteValue("RemotePath", "/");
                 WriteValue("LocalPath", "");
+                WriteValue("Interval", "6");
                 WriteValue("Mode", "backup");
-                WriteValue("IsDeleteFile", "false");
+                WriteValue("IsDeleteFile", "false"); 
             }
         }
 
